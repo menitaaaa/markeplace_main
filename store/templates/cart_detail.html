@@ -1,0 +1,33 @@
+{% extends 'store/base.html' %}
+{% block content %}
+<h2>Tu Carrito</h2>
+<div class="card shadow">
+    <div class="card-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Cantidad</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in cart.cartitem_set.all %}
+                <tr>
+                    <td>{{ item.product.name }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>${{ item.subtotal }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="3" class="text-center">Tu carrito está vacío</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <hr>
+        <h4>Total: ${{ cart.total }}</h4>
+        <a href="/" class="btn btn-outline-secondary">Seguir Comprando</a>
+    </div>
+</div>
+{% endblock %}
