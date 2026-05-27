@@ -1,0 +1,19 @@
+{% extends 'store/base.html' %}
+{% block content %}
+<h2>Productos Disponibles</h2>
+<div class="row">
+    {% for product in products %}
+    <div class="col-md-4">
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5>{{ product.name }}</h5>
+                <p class="text-success">$ {{ product.price }}</p>
+                <a href="/cart/add/{{ product.id }}/" class="btn btn-outline-primary">Agregar al carrito</a>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <p>No hay productos todavía. Ve al /admin y crea uno.</p>
+    {% endfor %}
+</div>
+{% endblock %}
