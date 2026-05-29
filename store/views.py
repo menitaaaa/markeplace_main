@@ -35,6 +35,10 @@ def logout_view(request):
 def cart_detail(request):
     cart, _ = Cart.objects.get_or_create(user=request.user)
     return render(request, 'store/cart_detail.html', {'cart': cart})
+@login_required
+def dashboard(request):
+    products = Product.objects.filter(owner=request.user)
+    return render(request, 'store/dashboard.html', {'products': products})
 
 @login_required
 def add_to_cart(request, product_id):

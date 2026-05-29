@@ -1,0 +1,28 @@
+{% extends 'store/base.html' %}
+{% block content %}
+<h2>Mi Panel de Vendedor</h2>
+<div class="card shadow mt-3">
+    <div class="card-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Precio</th>
+                    <th>Stock</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in products %}
+                <tr>
+                    <td>{{ product.name }}</td>
+                    <td>${{ product.price }}</td>
+                    <td>{{ product.stock }}</td>
+                </tr>
+                {% empty %}
+                <tr><td colspan="3">No tienes productos aún.</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
