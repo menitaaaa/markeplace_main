@@ -5,9 +5,9 @@ from .models import User, Product
 class RegisterForm(UserCreationForm):
     class Meta:
         model = User
-        fields = ('username', 'email', 'is_seller')
+        fields = ['username', 'email', 'is_seller']
 
 class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
-        fields = ['name', 'description', 'price', 'stock', 'categories']
+        fields = ['name', 'description', 'price', 'stock', 'category', 'image']
