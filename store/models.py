@@ -17,6 +17,7 @@ class Product(models.Model):
     description = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
     stock = models.PositiveIntegerField(default=0)
+    # Usamos 'category' en singular para que no falle tu forms.py
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='products')
     image = models.ImageField(upload_to='products/', null=True, blank=True)
     def __str__(self):
@@ -29,8 +30,6 @@ class Cart(models.Model):
     @property
     def total(self):
         return sum(item.subtotal for item in self.items.all())
-    def __str__(self):
-        return str(self.id)
 
 class CartItem(models.Model):
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE, related_name='items')
@@ -39,5 +38,3 @@ class CartItem(models.Model):
     @property
     def subtotal(self):
         return self.product.price * self.quantity
-    def __str__(self):
-        return f"{self.quantity} x {self.product.name}"
