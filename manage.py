@@ -6,6 +6,8 @@ import sys
 
 def main():
     """Run administrative tasks."""
+    # Asegúrate de que aquí diga 'markeplace_main' (sin la T) 
+    # para que coincida con el nombre de tu carpeta
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'markeplace_main.settings')
     try:
         from django.core.management import execute_from_command_line
